@@ -45,3 +45,5 @@ def gnmf_solvebynewton(c, a0 = None):
         a = M.repmat(a,1,N)
     elif(cond == 4):
         a = a * np.ones([M,N])
+        
+    return a
