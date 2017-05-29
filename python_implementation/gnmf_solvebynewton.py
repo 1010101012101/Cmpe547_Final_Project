@@ -1,7 +1,7 @@
+from __future__ import division
 import numpy as np
 import scipy as sp
 from scipy import special
-from __future__ import division
 import numpy.matlib as M
 
 def gnmf_solvebynewton(c, a0 = None):
@@ -10,7 +10,12 @@ def gnmf_solvebynewton(c, a0 = None):
         a0 = 0.1 * np.ones(np.shape(c))
 
     M, N = np.shape(a0)
-    Mc, Nc = np.shape(c)
+    if len(np.shape(c)) == 0:
+        Mc , Nc = 1,1
+    else:
+        Mc, Nc = np.shape(c)
+
+
 
     a = None
     cond = 0
@@ -45,5 +50,5 @@ def gnmf_solvebynewton(c, a0 = None):
         a = M.repmat(a,1,N)
     elif(cond == 4):
         a = a * np.ones([M,N])
-        
+
     return a
