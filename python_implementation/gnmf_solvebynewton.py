@@ -36,9 +36,8 @@ def gnmf_solvebynewton(c, a0 = None):
 
     a2 = None
     for index in range(10):
-        a2 = a - np.true_divide(
-        (math.log(a) - special.polygamma(0,a) + 1 - c),
-        (np.true_divide(1,a) - special.polygamma(1,a)))
+        a2 = a - (np.log(a) - special.polygamma(0,a) + 1 - c)/
+        (1/a - special.polygamma(1,a))
         idx = np.where(a2<0)[0]
         if( True in idx):
             a2[a2<0] = a2[a2<0] / 2
