@@ -53,7 +53,7 @@ def gnmf_vb_poisson_mult_fast(x,
     B = np.zeros([1,EPOCH])
     gammalnX = special.gammaln(X+1)
 
-    for e in range(EPOCH):
+    for e in range(1,EPOCH+1):
 
         LtLv = L_t.dot(L_v)
         tmp = X / (LtLv)
@@ -70,8 +70,8 @@ def gnmf_vb_poisson_mult_fast(x,
 
         E_v = alpha_ve * (beta_ve)
         # Compute the bound
-        if(e%10 == 10):
-            print("*")
+        if(e%10 == 1):
+            print("*", end='')
         if(e%print_period == 1 or e == EPOCH):
             g['E_T'] = E_t
             g['E_logT'] = logm(L_t)
